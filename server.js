@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 2222;
 const uri_remota = process.env.URI_MONGO;
 
-// ! Middleares
+// ! Middlewares
 app.use(express.json()); // Intrepeta el body y lo entiende
 app.use(cors()); // Todos los origenes estan permitidos
 

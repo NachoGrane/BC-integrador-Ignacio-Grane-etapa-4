@@ -7,7 +7,7 @@ const ProductosModelo = mongoose.model("productos", ProductosEsquema);
 const obtenerTodos = async () => {
   try {
     const productos = await ProductosModelo.find();
-    //console.log(productos)
+    //console.log(productos);
     return productos;
   } catch (error) {
     console.log("[obtenerTodos]", error);
