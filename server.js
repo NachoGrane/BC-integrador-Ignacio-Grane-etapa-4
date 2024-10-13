@@ -8,6 +8,7 @@ import routerProductos from "./routers/productos.router.js";
 import getConnection from "./utils/get-connection.js";
 import routerCarritos from "./routers/carrito.router.js";
 import routerUpload from "./routers/upload.router.js";
+import routerContacto from "./routers/contacto.router.js";
 
 // ! Variables/Constantes
 const app = express();
@@ -23,6 +24,7 @@ app.use(cors()); // Todos los origenes estan permitidos
 app.use("/api/v1/productos", routerProductos);
 app.use("/api/v1/carritos", routerCarritos);
 app.use("/api/v1/uploads", routerUpload);
+app.use("/api/v1/contacto", routerContacto);
 
 app.get("/", (req, res) => {
   res.redirect("api/v1/productos/");

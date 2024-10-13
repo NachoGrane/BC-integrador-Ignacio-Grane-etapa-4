@@ -5,8 +5,8 @@ const uploadImagen = (req, res) => {
     return res.status(400).send("No se recibió ninguna imagen");
   }
 
-  console.log(req.protocol);
-  console.log(req.get("host")); // Obtengo url
+  // console.log(req.protocol);
+  // console.log(req.get("host")); // Obtengo url
 
   const urlCompleta = `${req.protocol}://${req.get("host")}/uploads/${
     file.filename

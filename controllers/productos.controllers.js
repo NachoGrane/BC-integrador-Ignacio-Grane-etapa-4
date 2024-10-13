@@ -63,7 +63,7 @@ const remove = async (req, res) => {
 };
 
 const search = async (req, res) => {
-  console.log("[SOY SEARCH REQ.PARAMS]", req.query);
+  // console.log("[SOY SEARCH REQ.PARAMS]", req.query);
   const nombre = req.query.name;
 
   try {
