@@ -18,6 +18,7 @@ const obtenerUnProducto = async (id) => {
   try {
     // https://mongoosejs.com/docs/queries.html
     //const producto = await ProductosModelo.find({ _id: id})
+
     const producto = await ProductosModelo.findById(id);
     console.log(producto);
     return producto;
@@ -70,10 +71,23 @@ const deleteProducto = async (id) => {
   }
 };
 
+const buscar = async (nombre) => {
+  try {
+    const newRegex = new RegExp(nombre, "i");
+    const productos = await ProductosModelo.find({
+      nombre: newRegex,
+    });
+    return productos;
+  } catch (error) {
+    console.log("[buscar]", error);
+  }
+};
+
 export default {
   obtenerTodos,
   obtenerUnProducto,
   crearProducto,
   updateProducto,
   deleteProducto,
+  buscar,
 };

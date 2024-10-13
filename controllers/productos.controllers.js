@@ -23,13 +23,14 @@ const getOne = async (req, res) => {
 
 const create = async (req, res) => {
   const producto = req.body;
-  //console.log(producto)
 
   try {
+    console.log("[createProduct BACK] ", producto);
     const productoCreado = await modelos.crearProducto(producto);
     res.status(201).json(handleMongoId(productoCreado));
   } catch (error) {
     console.log("[create]", error);
+    res.status(500).json(error);
   }
 };
 
@@ -61,10 +62,23 @@ const remove = async (req, res) => {
   }
 };
 
+const search = async (req, res) => {
+  console.log("[SOY SEARCH REQ.PARAMS]", req.query);
+  const nombre = req.query.name;
+
+  try {
+    const productos = await modelos.buscar(nombre);
+    res.json(handleMongoId(productos));
+  } catch (error) {
+    console.log("[search]", error);
+  }
+};
+
 export default {
   getAll,
   getOne,
   create,
   update,
   remove,
+  search,
 };
