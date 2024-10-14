@@ -25,8 +25,12 @@ const create = async (req, res) => {
   const producto = req.body;
 
   try {
-    console.log("[createProduct BACK] ", producto);
-    const productoCreado = await modelos.crearProducto(producto);
+    const productoTransformado = {
+      ...producto,
+      envio: producto.envio === "on" ? true : false,
+    };
+    console.log("[createProduct BACK] ", productoTransformado);
+    const productoCreado = await modelos.crearProducto(productoTransformado);
     res.status(201).json(handleMongoId(productoCreado));
   } catch (error) {
     console.log("[create]", error);
